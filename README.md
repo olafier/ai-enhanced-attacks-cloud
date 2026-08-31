@@ -5,6 +5,7 @@
 A literature review and research proposal on how AI is changing the **speed** and the **identity attack surface** of cloud environments — and a controlled experiment designed to measure one specific consequence of that change.
 
 **Status:** Literature review complete · Presented at UTCC, August 2026 · Experiment not yet run
+
 **Author:** Jarudech Thongkum — Computer Science, University of the Thai Chamber of Commerce
 
 ---
