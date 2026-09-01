@@ -8,6 +8,8 @@ A literature review and research proposal on how AI is changing the **speed** an
 
 **Author:** Jarudech Thongkum — Computer Science, University of the Thai Chamber of Commerce
 
+**Slides:** [View presentation on Canva](https://canva.link/xcb7ndjorsurisj)
+
 ---
 
 ## The problem
