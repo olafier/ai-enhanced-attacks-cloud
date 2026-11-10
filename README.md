@@ -4,11 +4,13 @@
 
 A literature review and research proposal on how AI is changing the **speed** and the **identity attack surface** of cloud environments — and a controlled experiment designed to measure one specific consequence of that change.
 
-**Status:** Literature review complete · Presented at UTCC, August 2026 · Experiment not yet run
+**Status:** Literature review complete · Presented at UTCC, August 2026 · **Phase 1 first results in** (permission-scope measurement) · behavioral CloudTrail run pending
 
 **Author:** Jarudech Thongkum — Computer Science, University of the Thai Chamber of Commerce
 
 **Slides:** [View presentation on Canva](https://canva.link/xcb7ndjorsurisj)
+
+**Phase 1 lab:** [olafier/iam-blast-radius-lab](https://github.com/olafier/iam-blast-radius-lab)
 
 ---
 
@@ -54,7 +56,7 @@ The sentence that matters most for what comes next is the one Google wrote plain
 
 ---
 
-## The proposed experiment
+## The experiment
 
 ### Research question
 
@@ -64,46 +66,66 @@ This is deliberately *not* "does least privilege work?" — that question has a 
 
 ### Method
 
-One compromised identity. One fixed set of **15 actions** spanning read, write, destroy, and escalate. Three IAM policies. Nothing varies except the policy.
+One compromised identity. One **fixed set of actions** spanning read, write, destroy, and escalate. Three IAM policies. Nothing varies except the policy.
 
-| | Policy A | Policy B | Policy C |
+The MVP planned 15 actions on S3 + EC2. Phase 1 as run **expanded this to 100 actions across 12 services** (S3, EC2, IAM, STS, Lambda, DynamoDB, KMS, CloudTrail, CloudWatch Logs, Secrets Manager, SSM, RDS), categorised READ 41 · WRITE 26 · DESTROY 20 · ESCALATE 13.
+
+### Two instruments, two kinds of claim
+
+The method distinguishes **what a policy permits** from **what actually happens when an action is attempted**. These need different instruments, and Phase 1 reports only the first.
+
+- **Permission scope — `iam:SimulateCustomPolicy` (done).** Asks AWS whether each action is allowed, with no call executed and nothing created. This is a clean, safe measurement of scope.
+- **Behavioral — CloudTrail (pending).** Executes the actions and counts `eventName` + `errorCode` from the log. This is the behavioral experiment the roadmap builds toward; until it is run, the numbers below are permission-level, not behavioral.
+
+```
+policy A   eventName TerminateInstances   errorCode AccessDenied   → blocked
+policy C   eventName TerminateInstances   errorCode —              → would complete
+policy C   eventName CreateRole           errorCode AccessDenied   → blocked (IAM mutation)
+```
+
+Without the log there is no behavioral experiment — only a permission measurement. Phase 1 is honest about being the latter.
+
+### Results — permission scope (IAM Policy Simulator, 100 actions)
+
+Full data, chart and the CloudShell run are in [`/lab`](lab) and in [iam-blast-radius-lab](https://github.com/olafier/iam-blast-radius-lab).
+
+| | Policy A — over-permissive | Policy B — moderate | Policy C — least privilege |
 |---|---|---|---|
-| | over-permissive | moderate | least privilege |
-| Actions the identity completed | ? / 15 | ? / 15 | ? / 15 |
-| Distinct resources reached | ? | ? | ? |
-| Destructive action possible? | yes / no | yes / no | yes / no |
-| Escalation to administrator? | yes / no | yes / no | yes / no |
+| Actions allowed | **91 / 100** | **43 / 100** | **6 / 100** |
+| Action Success Rate | 91.0% | 43.0% | 6.0% |
+| Weighted Blast Radius | 83.9% | 25.9% | 3.9% |
+| Destructive action possible? | **yes (19/20)** | no (0/20) | no (0/20) |
+| Escalation to administrator? | **partial (6/13)** | no (0/13) | no (0/13) |
 
-**The cells are empty on purpose.** Filling them is the work.
+**The cells the proposal left empty are now filled — at the permission level.** The behavioral CloudTrail pass will re-fill them with executed-and-logged counts.
 
-### Why CloudTrail is the instrument, not decoration
+Two metrics, with weights fixed before the run:
 
-Every API call is logged with `eventName` and `errorCode`. Counting those log lines is what converts *"what could the attacker do"* from an opinion into a measurement.
+- **ASR** = allowed / total × 100 — every action counts equally.
+- **WBR** = Σ weight(allowed) / Σ weight(all) × 100, with READ 1 · WRITE 2 · DESTROY 3 · ESCALATE 4 — actions counted by severity.
 
-```
-policy A   eventName TerminateInstances   errorCode —              → counted as completed
-policy B   eventName TerminateInstances   errorCode AccessDenied   → counted as blocked
-policy C   eventName CreateRole           errorCode AccessDenied   → counted as blocked
-```
+Three findings:
 
-Without the log there is no experiment — only a demonstration.
+1. **Blast radius grows non-linearly with scope.** Least privilege → moderate adds 37 points of ASR but only 22 of WBR (moderate gains READ/WRITE only). Moderate → over-permissive adds 58 points of WBR because DESTROY and ESCALATE open up.
+2. **The ASR − WBR gap encodes severity.** The moderate policy succeeds at 43% of actions but 25.9% weighted — it holds nothing destructive. For the over-permissive policy the gap narrows (91 vs 83.9).
+3. **"No `iam:*`" ≠ "cannot escalate."** The over-permissive policy is denied all 9 IAM identity-mutation actions, yet still reaches 6 of 13 escalation actions through resource policies and execution paths (`s3:PutBucketPolicy`, `kms:PutKeyPolicy`, `secretsmanager:PutResourcePolicy`, `ec2:AssociateIamInstanceProfile`, `sts:AssumeRole`, `ssm:SendCommand`). This is the mechanism behind UNC6426's "overly permissive" role.
 
 ### Scope
 
-**MVP:** IAM policies · S3 + EC2 · fixed action set · CloudTrail measurement
+**MVP:** IAM policies · fixed action set · permission-scope measurement — **done**
 
-**Later:** OIDC trust · CI/CD identity · automated detection · automated response
+**Next:** CloudTrail behavioral run · OIDC trust · CI/CD identity · automated detection · automated response
 
 ---
 
 ## Roadmap
 
-| Phase | Focus |
-|---|---|
-| **1** | IAM blast-radius experiment — measure permission scope against a fixed action set |
-| **2** | OIDC / CI-CD identity — move the setup closer to the real UNC6426 chain |
-| **3** | Detection & automated response — can this activity be detected and contained? |
-| **Future** | AI-assisted log analysis to speed up investigation |
+| Phase | Focus | State |
+|---|---|---|
+| **1** | IAM blast-radius — measure permission scope against a fixed action set | **permission-scope done**; behavioral CloudTrail pass pending |
+| **2** | OIDC / CI-CD identity — move the setup closer to the real UNC6426 chain | not started |
+| **3** | Detection & automated response — can this activity be detected and contained? | not started |
+| **Future** | AI-assisted log analysis to speed up investigation | not started |
 
 ---
 
@@ -113,8 +135,12 @@ Without the log there is no experiment — only a demonstration.
 /slides       Presentation deck (PDF)
 /notes        Reading notes per source
 /sources.md   Every figure mapped to the report it came from
-/lab          IAM policies and action scripts  (Phase 1 — in progress)
+/lab          Phase 1 experiment — IAM policies, action set, runners, results, run evidence
 ```
+
+The Phase 1 lab is also published standalone at
+[olafier/iam-blast-radius-lab](https://github.com/olafier/iam-blast-radius-lab); the copy in
+[`/lab`](lab) is kept in sync.
 
 ---
 
@@ -129,4 +155,6 @@ Without the log there is no experiment — only a demonstration.
 
 ## A note on honesty
 
-Figures on the slides are traced to a named source. Where a number came through secondary reporting rather than the original report, that is recorded in `sources.md`. The experiment described above **has not been run** — nothing in this repository presents expected results as collected data.
+Figures on the slides are traced to a named source. Where a number came through secondary reporting rather than the original report, that is recorded in `sources.md`.
+
+Phase 1 has produced its first results, and this repository is precise about what kind they are: a **permission-scope measurement** from the IAM Policy Simulator, where "allowed" means *permitted by policy*, not *executed and logged*. The **behavioral experiment with CloudTrail as the instrument has not been run yet**, and no simulator figure is presented as a behavioral result. The simulator also sees only identity policies — not SCPs, permission boundaries, target resource policies, or role trust policies.

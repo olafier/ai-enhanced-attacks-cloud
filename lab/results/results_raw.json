@@ -1,0 +1,910 @@
+{
+  "meta": {
+    "mode": "mock",
+    "account": "mock",
+    "region": "mock",
+    "timestamp": "2026-11-10T08:36:49.874769+00:00"
+  },
+  "results": [
+    {
+      "action": "s3:ListAllMyBuckets",
+      "service": "s3",
+      "category": "READ",
+      "weight": 1,
+      "policy_A": "allowed",
+      "policy_B": "allowed",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "s3:ListBucket",
+      "service": "s3",
+      "category": "READ",
+      "weight": 1,
+      "policy_A": "allowed",
+      "policy_B": "allowed",
+      "policy_C": "allowed"
+    },
+    {
+      "action": "s3:GetObject",
+      "service": "s3",
+      "category": "READ",
+      "weight": 1,
+      "policy_A": "allowed",
+      "policy_B": "allowed",
+      "policy_C": "allowed"
+    },
+    {
+      "action": "s3:GetBucketPolicy",
+      "service": "s3",
+      "category": "READ",
+      "weight": 1,
+      "policy_A": "allowed",
+      "policy_B": "allowed",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "s3:GetBucketLocation",
+      "service": "s3",
+      "category": "READ",
+      "weight": 1,
+      "policy_A": "allowed",
+      "policy_B": "allowed",
+      "policy_C": "allowed"
+    },
+    {
+      "action": "s3:PutObject",
+      "service": "s3",
+      "category": "WRITE",
+      "weight": 2,
+      "policy_A": "allowed",
+      "policy_B": "allowed",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "s3:PutBucketTagging",
+      "service": "s3",
+      "category": "WRITE",
+      "weight": 2,
+      "policy_A": "allowed",
+      "policy_B": "implicitDeny",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "s3:DeleteObject",
+      "service": "s3",
+      "category": "DESTROY",
+      "weight": 3,
+      "policy_A": "allowed",
+      "policy_B": "implicitDeny",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "s3:DeleteBucket",
+      "service": "s3",
+      "category": "DESTROY",
+      "weight": 3,
+      "policy_A": "allowed",
+      "policy_B": "implicitDeny",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "s3:PutBucketPolicy",
+      "service": "s3",
+      "category": "ESCALATE",
+      "weight": 4,
+      "policy_A": "allowed",
+      "policy_B": "implicitDeny",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "ec2:DescribeInstances",
+      "service": "ec2",
+      "category": "READ",
+      "weight": 1,
+      "policy_A": "allowed",
+      "policy_B": "allowed",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "ec2:DescribeSecurityGroups",
+      "service": "ec2",
+      "category": "READ",
+      "weight": 1,
+      "policy_A": "allowed",
+      "policy_B": "allowed",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "ec2:DescribeVpcs",
+      "service": "ec2",
+      "category": "READ",
+      "weight": 1,
+      "policy_A": "allowed",
+      "policy_B": "allowed",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "ec2:DescribeSnapshots",
+      "service": "ec2",
+      "category": "READ",
+      "weight": 1,
+      "policy_A": "allowed",
+      "policy_B": "allowed",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "ec2:RunInstances",
+      "service": "ec2",
+      "category": "WRITE",
+      "weight": 2,
+      "policy_A": "allowed",
+      "policy_B": "implicitDeny",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "ec2:CreateSecurityGroup",
+      "service": "ec2",
+      "category": "WRITE",
+      "weight": 2,
+      "policy_A": "allowed",
+      "policy_B": "implicitDeny",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "ec2:AuthorizeSecurityGroupIngress",
+      "service": "ec2",
+      "category": "WRITE",
+      "weight": 2,
+      "policy_A": "allowed",
+      "policy_B": "implicitDeny",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "ec2:TerminateInstances",
+      "service": "ec2",
+      "category": "DESTROY",
+      "weight": 3,
+      "policy_A": "allowed",
+      "policy_B": "implicitDeny",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "ec2:DeleteSecurityGroup",
+      "service": "ec2",
+      "category": "DESTROY",
+      "weight": 3,
+      "policy_A": "allowed",
+      "policy_B": "implicitDeny",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "ec2:AssociateIamInstanceProfile",
+      "service": "ec2",
+      "category": "ESCALATE",
+      "weight": 4,
+      "policy_A": "allowed",
+      "policy_B": "implicitDeny",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "iam:ListUsers",
+      "service": "iam",
+      "category": "READ",
+      "weight": 1,
+      "policy_A": "allowed",
+      "policy_B": "implicitDeny",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "iam:ListRoles",
+      "service": "iam",
+      "category": "READ",
+      "weight": 1,
+      "policy_A": "allowed",
+      "policy_B": "implicitDeny",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "iam:GetUser",
+      "service": "iam",
+      "category": "READ",
+      "weight": 1,
+      "policy_A": "allowed",
+      "policy_B": "implicitDeny",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "iam:ListAttachedUserPolicies",
+      "service": "iam",
+      "category": "READ",
+      "weight": 1,
+      "policy_A": "allowed",
+      "policy_B": "implicitDeny",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "iam:GetAccountAuthorizationDetails",
+      "service": "iam",
+      "category": "READ",
+      "weight": 1,
+      "policy_A": "allowed",
+      "policy_B": "implicitDeny",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "iam:CreateUser",
+      "service": "iam",
+      "category": "WRITE",
+      "weight": 2,
+      "policy_A": "implicitDeny",
+      "policy_B": "implicitDeny",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "iam:DeleteUser",
+      "service": "iam",
+      "category": "DESTROY",
+      "weight": 3,
+      "policy_A": "implicitDeny",
+      "policy_B": "implicitDeny",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "iam:CreateAccessKey",
+      "service": "iam",
+      "category": "ESCALATE",
+      "weight": 4,
+      "policy_A": "implicitDeny",
+      "policy_B": "implicitDeny",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "iam:AttachUserPolicy",
+      "service": "iam",
+      "category": "ESCALATE",
+      "weight": 4,
+      "policy_A": "implicitDeny",
+      "policy_B": "implicitDeny",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "iam:PutUserPolicy",
+      "service": "iam",
+      "category": "ESCALATE",
+      "weight": 4,
+      "policy_A": "implicitDeny",
+      "policy_B": "implicitDeny",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "iam:CreatePolicyVersion",
+      "service": "iam",
+      "category": "ESCALATE",
+      "weight": 4,
+      "policy_A": "implicitDeny",
+      "policy_B": "implicitDeny",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "iam:UpdateAssumeRolePolicy",
+      "service": "iam",
+      "category": "ESCALATE",
+      "weight": 4,
+      "policy_A": "implicitDeny",
+      "policy_B": "implicitDeny",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "iam:PassRole",
+      "service": "iam",
+      "category": "ESCALATE",
+      "weight": 4,
+      "policy_A": "implicitDeny",
+      "policy_B": "implicitDeny",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "iam:CreateLoginProfile",
+      "service": "iam",
+      "category": "ESCALATE",
+      "weight": 4,
+      "policy_A": "implicitDeny",
+      "policy_B": "implicitDeny",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "sts:GetCallerIdentity",
+      "service": "sts",
+      "category": "READ",
+      "weight": 1,
+      "policy_A": "allowed",
+      "policy_B": "allowed",
+      "policy_C": "allowed"
+    },
+    {
+      "action": "sts:GetAccessKeyInfo",
+      "service": "sts",
+      "category": "READ",
+      "weight": 1,
+      "policy_A": "allowed",
+      "policy_B": "implicitDeny",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "sts:TagSession",
+      "service": "sts",
+      "category": "WRITE",
+      "weight": 2,
+      "policy_A": "allowed",
+      "policy_B": "implicitDeny",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "sts:AssumeRole",
+      "service": "sts",
+      "category": "ESCALATE",
+      "weight": 4,
+      "policy_A": "allowed",
+      "policy_B": "implicitDeny",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "lambda:ListFunctions",
+      "service": "lambda",
+      "category": "READ",
+      "weight": 1,
+      "policy_A": "allowed",
+      "policy_B": "allowed",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "lambda:GetFunction",
+      "service": "lambda",
+      "category": "READ",
+      "weight": 1,
+      "policy_A": "allowed",
+      "policy_B": "allowed",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "lambda:GetFunctionConfiguration",
+      "service": "lambda",
+      "category": "READ",
+      "weight": 1,
+      "policy_A": "allowed",
+      "policy_B": "allowed",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "lambda:CreateFunction",
+      "service": "lambda",
+      "category": "WRITE",
+      "weight": 2,
+      "policy_A": "allowed",
+      "policy_B": "implicitDeny",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "lambda:UpdateFunctionCode",
+      "service": "lambda",
+      "category": "WRITE",
+      "weight": 2,
+      "policy_A": "allowed",
+      "policy_B": "allowed",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "lambda:InvokeFunction",
+      "service": "lambda",
+      "category": "WRITE",
+      "weight": 2,
+      "policy_A": "allowed",
+      "policy_B": "allowed",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "lambda:AddPermission",
+      "service": "lambda",
+      "category": "WRITE",
+      "weight": 2,
+      "policy_A": "allowed",
+      "policy_B": "implicitDeny",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "lambda:DeleteFunction",
+      "service": "lambda",
+      "category": "DESTROY",
+      "weight": 3,
+      "policy_A": "allowed",
+      "policy_B": "implicitDeny",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "lambda:DeleteAlias",
+      "service": "lambda",
+      "category": "DESTROY",
+      "weight": 3,
+      "policy_A": "allowed",
+      "policy_B": "implicitDeny",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "dynamodb:ListTables",
+      "service": "dynamodb",
+      "category": "READ",
+      "weight": 1,
+      "policy_A": "allowed",
+      "policy_B": "allowed",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "dynamodb:DescribeTable",
+      "service": "dynamodb",
+      "category": "READ",
+      "weight": 1,
+      "policy_A": "allowed",
+      "policy_B": "allowed",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "dynamodb:Scan",
+      "service": "dynamodb",
+      "category": "READ",
+      "weight": 1,
+      "policy_A": "allowed",
+      "policy_B": "allowed",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "dynamodb:PutItem",
+      "service": "dynamodb",
+      "category": "WRITE",
+      "weight": 2,
+      "policy_A": "allowed",
+      "policy_B": "allowed",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "dynamodb:UpdateItem",
+      "service": "dynamodb",
+      "category": "WRITE",
+      "weight": 2,
+      "policy_A": "allowed",
+      "policy_B": "allowed",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "dynamodb:DeleteItem",
+      "service": "dynamodb",
+      "category": "DESTROY",
+      "weight": 3,
+      "policy_A": "allowed",
+      "policy_B": "implicitDeny",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "dynamodb:DeleteTable",
+      "service": "dynamodb",
+      "category": "DESTROY",
+      "weight": 3,
+      "policy_A": "allowed",
+      "policy_B": "implicitDeny",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "dynamodb:DeleteBackup",
+      "service": "dynamodb",
+      "category": "DESTROY",
+      "weight": 3,
+      "policy_A": "allowed",
+      "policy_B": "implicitDeny",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "kms:ListKeys",
+      "service": "kms",
+      "category": "READ",
+      "weight": 1,
+      "policy_A": "allowed",
+      "policy_B": "allowed",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "kms:DescribeKey",
+      "service": "kms",
+      "category": "READ",
+      "weight": 1,
+      "policy_A": "allowed",
+      "policy_B": "allowed",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "kms:Decrypt",
+      "service": "kms",
+      "category": "READ",
+      "weight": 1,
+      "policy_A": "allowed",
+      "policy_B": "implicitDeny",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "kms:Encrypt",
+      "service": "kms",
+      "category": "WRITE",
+      "weight": 2,
+      "policy_A": "allowed",
+      "policy_B": "allowed",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "kms:CreateAlias",
+      "service": "kms",
+      "category": "WRITE",
+      "weight": 2,
+      "policy_A": "allowed",
+      "policy_B": "implicitDeny",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "kms:ScheduleKeyDeletion",
+      "service": "kms",
+      "category": "DESTROY",
+      "weight": 3,
+      "policy_A": "allowed",
+      "policy_B": "implicitDeny",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "kms:DisableKey",
+      "service": "kms",
+      "category": "DESTROY",
+      "weight": 3,
+      "policy_A": "allowed",
+      "policy_B": "implicitDeny",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "kms:PutKeyPolicy",
+      "service": "kms",
+      "category": "ESCALATE",
+      "weight": 4,
+      "policy_A": "allowed",
+      "policy_B": "implicitDeny",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "cloudtrail:DescribeTrails",
+      "service": "cloudtrail",
+      "category": "READ",
+      "weight": 1,
+      "policy_A": "allowed",
+      "policy_B": "allowed",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "cloudtrail:GetTrailStatus",
+      "service": "cloudtrail",
+      "category": "READ",
+      "weight": 1,
+      "policy_A": "allowed",
+      "policy_B": "allowed",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "cloudtrail:LookupEvents",
+      "service": "cloudtrail",
+      "category": "READ",
+      "weight": 1,
+      "policy_A": "allowed",
+      "policy_B": "allowed",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "cloudtrail:PutEventSelectors",
+      "service": "cloudtrail",
+      "category": "WRITE",
+      "weight": 2,
+      "policy_A": "allowed",
+      "policy_B": "implicitDeny",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "cloudtrail:StopLogging",
+      "service": "cloudtrail",
+      "category": "DESTROY",
+      "weight": 3,
+      "policy_A": "allowed",
+      "policy_B": "implicitDeny",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "cloudtrail:DeleteTrail",
+      "service": "cloudtrail",
+      "category": "DESTROY",
+      "weight": 3,
+      "policy_A": "allowed",
+      "policy_B": "implicitDeny",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "logs:DescribeLogGroups",
+      "service": "logs",
+      "category": "READ",
+      "weight": 1,
+      "policy_A": "allowed",
+      "policy_B": "allowed",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "logs:DescribeLogStreams",
+      "service": "logs",
+      "category": "READ",
+      "weight": 1,
+      "policy_A": "allowed",
+      "policy_B": "allowed",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "logs:GetLogEvents",
+      "service": "logs",
+      "category": "READ",
+      "weight": 1,
+      "policy_A": "allowed",
+      "policy_B": "allowed",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "logs:CreateLogStream",
+      "service": "logs",
+      "category": "WRITE",
+      "weight": 2,
+      "policy_A": "allowed",
+      "policy_B": "allowed",
+      "policy_C": "allowed"
+    },
+    {
+      "action": "logs:PutLogEvents",
+      "service": "logs",
+      "category": "WRITE",
+      "weight": 2,
+      "policy_A": "allowed",
+      "policy_B": "allowed",
+      "policy_C": "allowed"
+    },
+    {
+      "action": "logs:DeleteLogGroup",
+      "service": "logs",
+      "category": "DESTROY",
+      "weight": 3,
+      "policy_A": "allowed",
+      "policy_B": "implicitDeny",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "logs:DeleteLogStream",
+      "service": "logs",
+      "category": "DESTROY",
+      "weight": 3,
+      "policy_A": "allowed",
+      "policy_B": "implicitDeny",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "secretsmanager:ListSecrets",
+      "service": "secretsmanager",
+      "category": "READ",
+      "weight": 1,
+      "policy_A": "allowed",
+      "policy_B": "allowed",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "secretsmanager:DescribeSecret",
+      "service": "secretsmanager",
+      "category": "READ",
+      "weight": 1,
+      "policy_A": "allowed",
+      "policy_B": "allowed",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "secretsmanager:GetSecretValue",
+      "service": "secretsmanager",
+      "category": "READ",
+      "weight": 1,
+      "policy_A": "allowed",
+      "policy_B": "implicitDeny",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "secretsmanager:CreateSecret",
+      "service": "secretsmanager",
+      "category": "WRITE",
+      "weight": 2,
+      "policy_A": "allowed",
+      "policy_B": "implicitDeny",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "secretsmanager:PutSecretValue",
+      "service": "secretsmanager",
+      "category": "WRITE",
+      "weight": 2,
+      "policy_A": "allowed",
+      "policy_B": "implicitDeny",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "secretsmanager:DeleteSecret",
+      "service": "secretsmanager",
+      "category": "DESTROY",
+      "weight": 3,
+      "policy_A": "allowed",
+      "policy_B": "implicitDeny",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "secretsmanager:PutResourcePolicy",
+      "service": "secretsmanager",
+      "category": "ESCALATE",
+      "weight": 4,
+      "policy_A": "allowed",
+      "policy_B": "implicitDeny",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "ssm:DescribeInstanceInformation",
+      "service": "ssm",
+      "category": "READ",
+      "weight": 1,
+      "policy_A": "allowed",
+      "policy_B": "allowed",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "ssm:GetParameter",
+      "service": "ssm",
+      "category": "READ",
+      "weight": 1,
+      "policy_A": "allowed",
+      "policy_B": "allowed",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "ssm:GetParameters",
+      "service": "ssm",
+      "category": "READ",
+      "weight": 1,
+      "policy_A": "allowed",
+      "policy_B": "allowed",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "ssm:DescribeParameters",
+      "service": "ssm",
+      "category": "READ",
+      "weight": 1,
+      "policy_A": "allowed",
+      "policy_B": "allowed",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "ssm:PutParameter",
+      "service": "ssm",
+      "category": "WRITE",
+      "weight": 2,
+      "policy_A": "allowed",
+      "policy_B": "allowed",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "ssm:AddTagsToResource",
+      "service": "ssm",
+      "category": "WRITE",
+      "weight": 2,
+      "policy_A": "allowed",
+      "policy_B": "implicitDeny",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "ssm:StartSession",
+      "service": "ssm",
+      "category": "WRITE",
+      "weight": 2,
+      "policy_A": "allowed",
+      "policy_B": "implicitDeny",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "ssm:DeleteParameter",
+      "service": "ssm",
+      "category": "DESTROY",
+      "weight": 3,
+      "policy_A": "allowed",
+      "policy_B": "implicitDeny",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "ssm:SendCommand",
+      "service": "ssm",
+      "category": "ESCALATE",
+      "weight": 4,
+      "policy_A": "allowed",
+      "policy_B": "implicitDeny",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "rds:DescribeDBInstances",
+      "service": "rds",
+      "category": "READ",
+      "weight": 1,
+      "policy_A": "allowed",
+      "policy_B": "allowed",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "rds:DescribeDBSnapshots",
+      "service": "rds",
+      "category": "READ",
+      "weight": 1,
+      "policy_A": "allowed",
+      "policy_B": "allowed",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "rds:DescribeDBClusters",
+      "service": "rds",
+      "category": "READ",
+      "weight": 1,
+      "policy_A": "allowed",
+      "policy_B": "allowed",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "rds:CreateDBSnapshot",
+      "service": "rds",
+      "category": "WRITE",
+      "weight": 2,
+      "policy_A": "allowed",
+      "policy_B": "allowed",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "rds:ModifyDBInstance",
+      "service": "rds",
+      "category": "WRITE",
+      "weight": 2,
+      "policy_A": "allowed",
+      "policy_B": "implicitDeny",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "rds:CreateDBInstance",
+      "service": "rds",
+      "category": "WRITE",
+      "weight": 2,
+      "policy_A": "allowed",
+      "policy_B": "implicitDeny",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "rds:DeleteDBInstance",
+      "service": "rds",
+      "category": "DESTROY",
+      "weight": 3,
+      "policy_A": "allowed",
+      "policy_B": "implicitDeny",
+      "policy_C": "implicitDeny"
+    },
+    {
+      "action": "rds:DeleteDBSnapshot",
+      "service": "rds",
+      "category": "DESTROY",
+      "weight": 3,
+      "policy_A": "allowed",
+      "policy_B": "implicitDeny",
+      "policy_C": "implicitDeny"
+    }
+  ]
+}

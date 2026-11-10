@@ -1,0 +1,16 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {"Sid": "BroadRead", "Effect": "Allow", "Resource": "*",
+     "Action": ["s3:List*", "s3:Get*", "ec2:Describe*", "lambda:List*", "lambda:Get*",
+                "dynamodb:List*", "dynamodb:Describe*", "dynamodb:Scan", "dynamodb:GetItem", "dynamodb:Query",
+                "kms:List*", "kms:Describe*", "cloudtrail:Describe*", "cloudtrail:Get*", "cloudtrail:LookupEvents",
+                "logs:Describe*", "logs:Get*", "secretsmanager:List*", "secretsmanager:Describe*",
+                "ssm:Describe*", "ssm:GetParameter*", "rds:Describe*", "sts:GetCallerIdentity"]},
+    {"Sid": "OperationalWrite", "Effect": "Allow", "Resource": "*",
+     "Action": ["s3:PutObject", "dynamodb:PutItem", "dynamodb:UpdateItem",
+                "logs:CreateLogStream", "logs:PutLogEvents",
+                "lambda:InvokeFunction", "lambda:UpdateFunctionCode",
+                "ssm:PutParameter", "rds:CreateDBSnapshot", "kms:Encrypt"]}
+  ]
+}

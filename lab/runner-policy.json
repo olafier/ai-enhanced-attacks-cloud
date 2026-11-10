@@ -1,0 +1,8 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {"Sid": "RunPolicySimulatorOnly", "Effect": "Allow",
+     "Action": ["iam:SimulateCustomPolicy", "sts:GetCallerIdentity"],
+     "Resource": "*"}
+  ]
+}

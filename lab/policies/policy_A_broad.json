@@ -1,0 +1,10 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {"Sid": "PowerUserLike", "Effect": "Allow", "Resource": "*",
+     "Action": ["s3:*", "ec2:*", "lambda:*", "dynamodb:*", "kms:*", "cloudtrail:*", "logs:*",
+                "secretsmanager:*", "ssm:*", "rds:*", "sts:*"]},
+    {"Sid": "IamReadOnly", "Effect": "Allow", "Resource": "*",
+     "Action": ["iam:List*", "iam:Get*"]}
+  ]
+}
